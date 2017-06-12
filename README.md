@@ -1,6 +1,6 @@
 # Emitter
 
-## Note: Please do not upload your implementation to any online respository
+## Note: Please do not upload your implementation to any online repository
 
 Create an implementation of an `Emitter` module which includes the public methods `off`, `on`, `once` and `trigger`. Details about the API specification can be found in the `specification.md` document. It includes examples and details about the required functions and arguments.
 
