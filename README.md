@@ -13,7 +13,7 @@ The purpose of the task is to cover the following areas:
 * Using the latest JavaScript specification i.e. ES2015+, although it's optional for the following task
 
 ## Development
-The `Emitter` module must be written in JavaScript, although it’s up to you which JavaScript specification you wish to use, as the module will auotmatically be transpiled using [`babel`](https://babeljs.io) before passing through to the [`Karma`](https://karma-runner.github.io) test runner.
+The `Emitter` module must be written in JavaScript, although it’s up to you which JavaScript specification you wish to use, as the module will automatically be transpiled using [`babel`](https://babeljs.io) before passing through to the [`Karma`](https://karma-runner.github.io) test runner.
 
 All code must be written inside of `src/emitter.js` and use the following command to run the [`Karma`](https://karma-runner.github.io) test runner, which includes all the tests that your implementation must pass before submission.
 
