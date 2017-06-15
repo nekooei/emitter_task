@@ -9,7 +9,7 @@ The purpose of the task is to cover the following areas:
 * Using Node.js commands e.g. `npm test`
 * Using [`babel`](https://babeljs.io) and understanding the concept of "transpiling" from ES2015+ to ES5
 * Using [`Karma`](https://karma-runner.github.io) for testing JavaScript code
-* Using a pre-defined specification for creating code implementation
+* Using a pre-defined specification for creating a code implementation
 * Using the latest JavaScript specification i.e. ES2015+, although it's optional for the following task
 
 ## Development
