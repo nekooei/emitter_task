@@ -2,8 +2,18 @@
 
 Create an implementation of an `Emitter` module which includes the methods `off`, `on`, `once` and `trigger`. Details about the API can be found in the `specification.md` document.
 
+## Purpose
+The purpose of the task is to cover the following areas:
+
+* Usage of git commands e.g. `git clone`
+* Using Node.js commands e.g. `npm test`
+* Using [`babel`](https://babeljs.io) and understanding the concept of "transpiling" from ES2015+ to ES5
+* Using [`Karma`](https://karma-runner.github.io) for testing JavaScript code
+* Using a pre-defined specification for creating code implementation
+* Using the latest JavaScript specification i.e. ES2015+, although it's optional for the following task
+
 ## Development
-The `Emitter` module must be written in JavaScript, although it’s up to you which JavaScript specification you wish to use, as the module will be transpiled using [`babel`](https://babeljs.io) before passing through to the [`Karma`](https://karma-runner.github.io) test runner.
+The `Emitter` module must be written in JavaScript, although it’s up to you which JavaScript specification you wish to use, as the module will auotmatically be transpiled using [`babel`](https://babeljs.io) before passing through to the [`Karma`](https://karma-runner.github.io) test runner.
 
 All code must be written inside of `src/emitter.js` and use the following command to run the [`Karma`](https://karma-runner.github.io) test runner, which includes all the tests that your implementation must pass before submission.
 
@@ -11,7 +21,7 @@ All code must be written inside of `src/emitter.js` and use the following comman
 npm test
 ```
 
-**Note: The implementation must not rely on any third-party libraries or [Node.js](https://nodejs.org) modules, as we interested in seeing your coding ability.**
+**Note: The implementation must not rely on any third-party libraries or [Node.js](https://nodejs.org) modules, as we are interested in seeing your coding ability.**
 
 ## Requirements
 The following implementation requires [Node.js](https://nodejs.org) `v6.4.0`+ to be installed (either system wide or using the likes of [`nvm`](https://github.com/creationix/nvm)). It does not require any global modules, as all required modules are locally installed.
