@@ -2,8 +2,8 @@
 
 <dl>
 <dt><a href="#off">off(event, [fn])</a> ⇒ <code>number</code></dt>
-<dd><p>Unsubscribe an event name and all its subscribed functions or unsubscribe en event name
-and the function</p>
+<dd><p>Unsubscribe an event name and all its subscribed functions or unsubscribe an event name
+and the function provided only</p>
 </dd>
 <dt><a href="#on">on(event, fn)</a> ⇒ <code>number</code></dt>
 <dd><p>Subscribe a function to be called every time the event name is triggered</p>
@@ -19,15 +19,15 @@ and the function</p>
 <a name="off"></a>
 
 ## off(event, [fn]) ⇒ <code>number</code>
-Unsubscribe an event name and all its subscribed functions or unsubscribe en event name
-and the function
+Unsubscribe an event name and all its subscribed functions or unsubscribe an event name
+and the function provided only
 
 **Kind**: global function  
 **Returns**: <code>number</code> - The current number of subscribers for the event name  
 **Throws**:
 
 - <code>Error</code> If the event name is not a string data type or the function is not
-a function data type, if the argument is provided
+a function data type (if provided)
 
 **Access**: public  
 
