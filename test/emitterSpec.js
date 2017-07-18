@@ -116,7 +116,6 @@ describe('emitter', () => {
 
             expect(spyFunction.calls.count()).toBe(2);
 
-            Emitter.off(EVENT_NAME_ONE, spyFunction);
             Emitter.trigger(EVENT_NAME_ONE);
 
             expect(spyFunction.calls.count()).toBe(2);
@@ -135,7 +134,7 @@ describe('emitter', () => {
             expectErrorThrownOnInvalidStringArgument(Emitter.off);
         });
 
-        it('should throw an error if a non-function data type is passed as the second argument', () => {
+        it('should throw an error if a non-function data type is passed as the second argument (includes undefined being passed)', () => {
             expectErrorThrownOnInvalidFunctionArgument(Emitter.off);
         });
     });

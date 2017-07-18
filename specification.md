@@ -34,7 +34,7 @@ a function data type (if provided)
 | Param | Type | Description |
 | --- | --- | --- |
 | event | <code>string</code> | Event name |
-| [fn] | <code>function</code> | Optional function to unsubcribe from the associated event name; otherwise, if not defined, then all functions are unsubscribed |
+| [fn] | <code>function</code> | Optional function to unsubcribe from the associated event name; otherwise, if not defined, then all functions are unsubscribed. If undefined is passed, then this is considered to be "defined" |
 
 **Example**  
 ```js
