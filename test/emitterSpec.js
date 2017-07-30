@@ -5,6 +5,7 @@ describe('emitter', () => {
     const EVENT_NAME_ONE = 'event_name_one';
     const EVENT_NAME_ONE_UPPERCASE = 'event_name_ONE';
     const EVENT_NAME_TWO = 'event_name_two';
+    const EVENT_NAME_THREE = 'event_name_three';
 
     // Testing event arguments
     const ARGUMENT_ONE = 'arg1';
@@ -73,10 +74,11 @@ describe('emitter', () => {
         expect(Emitter.off(EVENT_NAME_ONE)).toBe(0);
         expect(Emitter.off(EVENT_NAME_ONE_UPPERCASE)).toBe(0);
         expect(Emitter.off(EVENT_NAME_TWO)).toBe(0);
+        expect(Emitter.off(EVENT_NAME_THREE)).toBe(0);
     });
 
     describe('#off', () => {
-        it('should unsubscribe a event name and the function', () => {
+        it('should unsubscribe an event name and the function ', () => {
             Emitter.on(EVENT_NAME_ONE, spyFunction);
             Emitter.on(EVENT_NAME_TWO, spyFunction);
             Emitter.trigger(EVENT_NAME_ONE);
@@ -91,7 +93,25 @@ describe('emitter', () => {
             expect(spyFunction.calls.count()).toBe(3);
         });
 
-        it('should unsubscribe a event name and the function only, when multiple functions are subscribed', () => {
+        it('should unsubscribe an event name and an optional function if not triggered', () => {
+            Emitter.on(EVENT_NAME_ONE, spyFunction);
+            Emitter.on(EVENT_NAME_TWO, spyFunction2);
+            Emitter.once(EVENT_NAME_THREE, spyFunction3);
+
+            Emitter.off(EVENT_NAME_ONE, spyFunction);
+            Emitter.off(EVENT_NAME_TWO);
+            Emitter.off(EVENT_NAME_THREE, spyFunction3);
+
+            Emitter.trigger(EVENT_NAME_ONE);
+            Emitter.trigger(EVENT_NAME_TWO);
+            Emitter.trigger(EVENT_NAME_THREE);
+
+            expect(spyFunction.calls.count()).toBe(0);
+            expect(spyFunction2.calls.count()).toBe(0);
+            expect(spyFunction3.calls.count()).toBe(0);
+        });
+
+        it('should unsubscribe an event name and the function, only when multiple functions are subscribed', () => {
             Emitter.on(EVENT_NAME_ONE, spyFunction);
             Emitter.on(EVENT_NAME_ONE, spyFunction2);
             Emitter.on(EVENT_NAME_TWO, spyFunction);
@@ -312,6 +332,11 @@ describe('emitter', () => {
             Emitter.off(EVENT_NAME_ONE);
 
             expect(Emitter.trigger(EVENT_NAME_ONE)).toBe(false);
+        });
+
+        it('should return false if an event name doesn\'t exist or has no subscribed functions', () => {
+            expect(Emitter.trigger(EVENT_NAME_ONE)).toBe(false);
+            expect(Emitter.trigger(`random_event_${Math.random()}`)).toBe(false);
         });
 
         it('should throw an error if a non-string data type is passed as the first argument', () => {
