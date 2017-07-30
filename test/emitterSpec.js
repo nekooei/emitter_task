@@ -78,7 +78,7 @@ describe('emitter', () => {
     });
 
     describe('#off', () => {
-        it('should unsubscribe an event name and the function ', () => {
+        it('should unsubscribe an event name and the function', () => {
             Emitter.on(EVENT_NAME_ONE, spyFunction);
             Emitter.on(EVENT_NAME_TWO, spyFunction);
             Emitter.trigger(EVENT_NAME_ONE);
