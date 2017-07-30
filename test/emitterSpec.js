@@ -116,6 +116,7 @@ describe('emitter', () => {
 
             expect(spyFunction.calls.count()).toBe(2);
 
+            Emitter.off(EVENT_NAME_ONE, spyFunction);
             Emitter.trigger(EVENT_NAME_ONE);
 
             expect(spyFunction.calls.count()).toBe(2);
