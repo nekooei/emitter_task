@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "setup": "npm install",
     "start": "webpack --watch",
+    "setup": "npm install",
     "test": "karma start",
     "zip": "bestzip submission.zip src/ test/ karma.conf.js package.json"
   },
