@@ -42,12 +42,12 @@ npm run setup
 ```
 
 ## On completion
-Ensure that all tests defined in the `test` directory are passing and execute the following command to ZIP everything required for submission:
+Ensure that **all** tests defined in the `test` directory are passing and execute the following command to ZIP everything required for submission:
 
 ```bash
 npm run zip
 ```
 
-Send the `submission.zip` file to your Frosmo contact by e-mail or using a file sharing service such as Google Drive.
+Upload the `submission.zip` file to a file sharing service such as Google Drive or Dropbox and provide the link to your Frosmo contact via e-mail.
 
 **Note: Do NOT upload your final implementation to any public repository such as GitHub.**
