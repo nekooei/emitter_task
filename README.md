@@ -12,11 +12,13 @@ For more information about the API, see `specification.md`.
 The purpose of the task is to use:
 
 * git commands, such as `git clone`
-* Node.js commands, such as e.g. `npm test`
+* Node.js scripts, such as e.g. `npm test`
 * [`babel`](https://babeljs.io) (also, to understand the concept of "transpiling" from ES2015+ to ES5)
 * [`Karma`](https://karma-runner.github.io) for testing JavaScript code
 * A pre-defined specification for creating a code implementation
-* The latest JavaScript specification. such as ES2015+ (this is optional)
+* The latest JavaScript specification. such as ES2015+ (this is optional to use)
+
+**Note: The task does not require an understanding of Node.js, as this is only used to execute the test cases. It does however require an understanding of how to install Node.js and use of the terminal/command prompt.**
 
 ## Development
 You must write the `Emitter` module in JavaScript. However, the JavaScript specification you use is up to you as the module will automatically be transpiled using [`babel`](https://babeljs.io) before passing it to the [`Karma`](https://karma-runner.github.io) test runner.
@@ -28,7 +30,7 @@ Write all your code in the `src/emitter.js` file and use the following command t
 npm test
 ```
 
-**Note: The implementation must not rely on any third-party libraries or [Node.js](https://nodejs.org) modules.**
+**Note: The implementation must not rely on any third-party libraries or [Node.js](https://nodejs.org) APIs/modules.**
 
 ## Requirements
 To create the implementation, you must have [Node.js](https://nodejs.org) `v6.4.0`+ installed (either system-wide or through [`nvm`](https://github.com/creationix/nvm) or similar). No global modules are required as all the necessary modules are locally installed.
