@@ -4,7 +4,7 @@
   "description": "Frosmo's recruitment emitter task",
   "main": "index.js",
   "scripts": {
-    "build": "./cli.js build",
+    "build": "webpack",
     "start": "webpack --watch",
     "setup": "npm install",
     "test": "karma start",
