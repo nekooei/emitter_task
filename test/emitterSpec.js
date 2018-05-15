@@ -71,10 +71,10 @@ describe('emitter', () => {
         spyFunction2 = jasmine.createSpy('EMPTY_FUNCTION_TWO');
         spyFunction3 = jasmine.createSpy('EMPTY_FUNCTION_THREE');
 
-        expect(Emitter.off(EVENT_NAME_ONE)).toBe(0);
-        expect(Emitter.off(EVENT_NAME_ONE_UPPERCASE)).toBe(0);
-        expect(Emitter.off(EVENT_NAME_TWO)).toBe(0);
-        expect(Emitter.off(EVENT_NAME_THREE)).toBe(0);
+        Emitter.off(EVENT_NAME_ONE);
+        Emitter.off(EVENT_NAME_ONE_UPPERCASE);
+        Emitter.off(EVENT_NAME_TWO);
+        Emitter.off(EVENT_NAME_THREE);
     });
 
     describe('#off', () => {
