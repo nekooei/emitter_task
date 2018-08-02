@@ -13,23 +13,27 @@ export function off(eventName, fn) {
     if(typeof eventName !== 'string'){
         throw new Error("Invalid input");
     }
-    if(!fn && typeof fn !== 'function'){
-        throw new Error("should provide a function");
-    }
     if(!fn){
         events = {
             ...events,
-            [eventName]: undefined
+            [eventName]:{
+                actions: []
+            }
         };
+        return 0;
     }else {
+        if(events[eventName].actions.length > 1){
+            return events[eventName].actions.length;
+        }
         events = {
             ...events,
-            [eventName]: events[eventName].func.filter(f => f.toString() !== fn.toString())
+            [eventName] :{
+                actions: events[eventName].actions.filter(action => action.func.toString() !== fn.toString())
+            }
         };
     }
 
-
-    return events[eventName].func.length;
+    return events[eventName].actions.length;
 }
 
 export function on(eventName, fn) {
@@ -37,23 +41,57 @@ export function on(eventName, fn) {
     if(eventName === undefined){
         throw new Error("eventName is required!");
     }
-    if(typeof eventName !== 'string' || (fn !== undefined && typeof fn !== 'function')){
+    if(typeof eventName !== 'string' || (fn === undefined || !isFunction(fn))){
         throw new Error("Invalid input");
     }
+
+    /*if(events[eventName] && doubleCheck(eventName, fn)){
+        return events[eventName].actions.length;
+    }*/
 
     events = {
         ...events,
         [eventName] : {
-            func :  events[eventName] !== undefined ? [...events[eventName].func, fn] : [fn],
-            once : false
+            actions :  events[eventName] !== undefined ? [...events[eventName].actions, {
+                func : fn,
+                once: false
+            }] : [{
+                func: fn,
+                once: false,
+            }],
         }
     };
-    return events[eventName].func.length;
+
+    return events[eventName].actions.length;
 }
 
-export function once() {
+export function once(eventName, fn) {
 
-    return Object.keys(events).length;
+    if(eventName === undefined){
+        throw new Error("eventName is required!");
+    }
+    if(typeof eventName !== 'string' || (fn === undefined || !isFunction(fn))){
+        throw new Error("Invalid input");
+    }
+
+    /*if(events[eventName] && doubleCheck(eventName, fn)){
+        return events[eventName].actions.length;
+    }*/
+
+    events = {
+        ...events,
+        [eventName] : {
+            actions :  events[eventName] !== undefined ? [...events[eventName].actions, {
+                func : fn,
+                once: true
+            }] : [{
+                func: fn,
+                once: true
+            }],
+        }
+    };
+
+    return events[eventName].actions.length;
 }
 
 export function trigger(eventName, ...args) {
@@ -63,14 +101,37 @@ export function trigger(eventName, ...args) {
     if(typeof eventName !== 'string'){
         throw new Error("Invalid input");
     }
+    console.log(events);
     if(events[eventName] !== undefined){
 
-        for(let func of events[eventName].func){
-            func(...args);
-        }
+        if(events[eventName].actions.length) {
+            for (let action of events[eventName].actions) {
+                if (action.once) {
 
-        return true;
+                } else {
+                    action.func(...args);
+                }
+
+            }
+            return true;
+        }else {
+            return false;
+        }
     }else {
         return false;
     }
+}
+
+
+function doubleCheck(name, fn){
+    for(let action of events[name].actions){
+        if(action.func.toString() === fn.toString()){
+            return true;
+        }
+    }
+    return false;
+}
+
+function isFunction(functionToCheck) {
+    return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 }
